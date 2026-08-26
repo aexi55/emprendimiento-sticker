@@ -1098,8 +1098,7 @@ function useCssAssetFallback(variable, path) {
 
 function assetCandidates(path) {
   const cleanPath = path.replace(/^assets\//, '');
-  const fileName = cleanPath.split('/').pop();
-  const variants = [cleanPath, fileName, `${cleanPath}`, `${fileName}`];
+  const variants = [cleanPath, `${cleanPath}`];
 
   if (cleanPath.startsWith('prints/')) {
     const variant = cleanPath.replace(/^prints\//, 'Prints/');
