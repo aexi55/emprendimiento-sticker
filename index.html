@@ -1070,22 +1070,41 @@ categoryOrder.forEach((key) => {
 });
 
 function useImageFallback(image) {
+  const candidates = assetCandidates(image.getAttribute('src'));
+  let candidateIndex = 0;
+
   image.addEventListener('error', () => {
-    if (!image.src.includes('/assets/')) return;
-    image.src = image.getAttribute('src').replace(/^assets\//, '');
-  }, { once: true });
+    candidateIndex += 1;
+    if (candidateIndex < candidates.length) {
+      image.src = candidates[candidateIndex];
+    }
+  });
 }
 
 function useCssAssetFallback(variable, path) {
+  const candidates = assetCandidates(path);
+  let candidateIndex = 0;
   const probe = new Image();
-  probe.onload = () => document.documentElement.style.setProperty(variable, `url("${path}")`);
+
+  probe.onload = () => document.documentElement.style.setProperty(variable, `url("${candidates[candidateIndex]}")`);
   probe.onerror = () => {
-    const fallback = path.replace(/^assets\//, '');
-    const fallbackProbe = new Image();
-    fallbackProbe.onload = () => document.documentElement.style.setProperty(variable, `url("${fallback}")`);
-    fallbackProbe.src = fallback;
+    candidateIndex += 1;
+    if (candidateIndex < candidates.length) {
+      probe.src = candidates[candidateIndex];
+    }
   };
-  probe.src = path;
+  probe.src = candidates[candidateIndex];
+}
+
+function assetCandidates(path) {
+  const cleanPath = path.replace(/^assets\//, '');
+  const variants = [path, cleanPath];
+
+  if (cleanPath.startsWith('prints/')) variants.push(cleanPath.replace(/^prints\//, 'Prints/'));
+  if (cleanPath.startsWith('separadores/')) variants.push(cleanPath.replace(/^separadores\//, 'Separadores/'));
+  if (cleanPath.startsWith('llaveros-acrilicos-catalogo/')) variants.push(cleanPath.replace(/^llaveros-acrilicos-catalogo\//, 'Llaveros acrílicos catálogo/'));
+
+  return [...new Set(variants)];
 }
 
 document.querySelectorAll('img[src^="assets/"]').forEach((image) => {
