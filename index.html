@@ -33,6 +33,7 @@
   --white:   #FFFDFB;
   --bg-url: url('assets/fondo-pagina.png');
   --nav-bg: url('assets/fondo-nav.jpg');
+  --nav-image: url('assets/208-sin-titulo-20260819211128.jpg');
   --r-sm: 12px;
   --r-md: 18px;
   --r-lg: 30px;
@@ -61,7 +62,7 @@ nav {
   position: sticky; top: 0; z-index: 100;
   background:
     linear-gradient(180deg, rgba(18, 34, 43, 0.22), rgba(18, 34, 43, 0.48)),
-    url('assets/208-sin-titulo-20260819211128.jpg') center 28% / cover no-repeat;
+    var(--nav-image) center 28% / cover no-repeat;
   border-bottom: 2px solid rgba(75,46,36,0.12);
   backdrop-filter: blur(8px);
   box-shadow: 0 8px 24px rgba(25, 27, 29, 0.12);
@@ -1007,7 +1008,7 @@ function renderCatalog() {
               <article class="catalog-card">
                 <span class="catalog-badge">${index + 1}</span>
                 <span class="catalog-stock ${stockClass}">${stockLabel}</span>
-                <div class="catalog-art"><img src="${item.image}" alt="${item.title}"></div>
+                <div class="catalog-art"><img src="${githubAsset(item.image)}" alt="${item.title}"></div>
                 <div class="catalog-info">
                   <p class="catalog-name">${item.title}</p>
                   <p class="catalog-desc">${item.description}</p>
@@ -1027,6 +1028,10 @@ function renderCatalog() {
       </section>
     `;
   }).join('');
+
+  document.querySelectorAll('img[src^="assets/"]').forEach((image) => {
+    useImageFallback(image);
+  });
 
   document.querySelectorAll('.catalog-tab').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -1056,9 +1061,39 @@ function subscribe() {
   document.getElementById('email-input').value = '';
 }
 
+function githubAsset(path) {
+  return path;
+}
+
 categoryOrder.forEach((key) => {
   expanded[key] = false;
 });
+
+function useImageFallback(image) {
+  image.addEventListener('error', () => {
+    if (!image.src.includes('/assets/')) return;
+    image.src = image.getAttribute('src').replace(/^assets\//, '');
+  }, { once: true });
+}
+
+function useCssAssetFallback(variable, path) {
+  const probe = new Image();
+  probe.onload = () => document.documentElement.style.setProperty(variable, `url("${path}")`);
+  probe.onerror = () => {
+    const fallback = path.replace(/^assets\//, '');
+    const fallbackProbe = new Image();
+    fallbackProbe.onload = () => document.documentElement.style.setProperty(variable, `url("${fallback}")`);
+    fallbackProbe.src = fallback;
+  };
+  probe.src = path;
+}
+
+document.querySelectorAll('img[src^="assets/"]').forEach((image) => {
+  useImageFallback(image);
+});
+
+useCssAssetFallback('--bg-url', 'assets/fondo-pagina.png');
+useCssAssetFallback('--nav-image', 'assets/208-sin-titulo-20260819211128.jpg');
 
 renderCatalog();
 </script>
