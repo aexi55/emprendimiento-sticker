@@ -1,0 +1,1131 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paniko Shop — Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:   #F7F1E6;
+  --bg:      #F8F0E8;
+  --bg-soft: #F3EAD9;
+  --panel:   rgba(255,255,255,0.7);
+  --card:    rgba(255,255,255,0.7);
+  --card-2:  rgba(244,232,214,0.8);
+  --brand:   #F3B57D;
+  --brand-d: #C9774E;
+  --peach:   #F6C69A;
+  --coral:   #F1A77C;
+  --coral-d: #D77C57;
+  --sage:    #B9D9C1;
+  --sage-d:  #5E8E70;
+  --lilac:   #D8C9F9;
+  --lilac-d: #7E62B7;
+  --lemon:   #F7DB67;
+  --sky:  #A9D6F7;
+  --ink:     #4B2E24;
+  --muted:   #6E4F43;
+  --border:  rgba(75,46,36,0.18);
+  --white:   #FFFDFB;
+  --bg-url: url('fondo-pagina.png');
+  --nav-bg: url('fondo-nav.jpg');
+  --nav-image: url('208-sin-titulo-20260819211128.jpg');
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 30px;
+  --r-pill: 999px;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--bg);
+  background-image: linear-gradient(rgba(8, 8, 8, 0.38), rgba(8,8,8,0.72)), var(--bg-url);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; }
+a { text-decoration: none; }
+
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background:
+    linear-gradient(180deg, rgba(18, 34, 43, 0.22), rgba(18, 34, 43, 0.48)),
+    var(--nav-image) center 28% / cover no-repeat;
+  border-bottom: 2px solid rgba(75,46,36,0.12);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(25, 27, 29, 0.12);
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 86px;
+  position: relative;
+}
+.nav-logo {
+  text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo img {
+  height: 42px; width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.18));
+}
+.nav-logo span { color: #fffef9; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: #fffef9;
+  font-weight: 700; font-size: 14px;
+  transition: color .2s;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+.nav-links a:hover { color: #f4d9b2; }
+.nav-actions { display: flex; gap: 12px; align-items: center; }
+
+/* ── HERO ── */
+.hero {
+  max-width: 1100px; margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: center;
+}
+.brand-logo-hero {
+  width: min(420px, 100%);
+  margin: 0 auto 1rem;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25));
+}
+.hero-text h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.05;
+  color: var(--ink); margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+.hero-text h1 em {
+  font-style: italic; color: var(--brand);
+}
+.hero-text p {
+  font-size: 17px; color: rgba(249,244,238,0.8);
+  margin-bottom: 2rem; max-width: 430px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  background: linear-gradient(135deg, #E8B565, #EA8D5C); color: #1d160f;
+  border: none; border-radius: var(--r-pill);
+  padding: 12px 28px; font-family: 'Quicksand', sans-serif;
+  font-size: 15px; font-weight: 800; cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+  text-decoration: none; display: inline-block;
+  box-shadow: 0 15px 28px rgba(228,138,92,0.24);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 30px rgba(228,138,92,0.28); }
+.btn-secondary {
+  background: rgba(255,255,255,0.08); color: var(--ink);
+  border: 1px solid rgba(255,255,255,0.16); border-radius: var(--r-pill);
+  padding: 12px 28px; font-family: 'Quicksand', sans-serif;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: border-color .2s, transform .1s, background .2s;
+  text-decoration: none; display: inline-block;
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.12); transform: translateY(-1px); }
+.hero-badges {
+  margin-top: 2rem; display: flex; gap: 10px; flex-wrap: wrap;
+}
+.badge {
+  background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+  border-radius: var(--r-pill); padding: 6px 14px;
+  font-size: 13px; font-weight: 700; color: var(--ink);
+  display: flex; align-items: center; gap: 6px;
+}
+.hero-visual {
+  display: grid; grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto; gap: 18px;
+}
+.sticker-card-hero {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform .25s, border-color .25s;
+  backdrop-filter: blur(8px);
+}
+.sticker-card-hero:hover { transform: rotate(-2deg) scale(1.02); border-color: rgba(255,255,255,0.3); }
+.sticker-card-hero:nth-child(2) { transform: rotate(3deg); margin-top: 24px; }
+.sticker-card-hero:nth-child(2):hover { transform: rotate(1deg) scale(1.02); }
+.sticker-card-hero:nth-child(3) { transform: rotate(-1.5deg); }
+.sticker-card-hero:nth-child(4) { transform: rotate(2.5deg); margin-top: -16px; }
+.sh-art {
+  height: 180px; display: flex; align-items: center;
+  justify-content: center; padding: 12px; background: rgba(255,255,255,0.02);
+}
+.sh-art img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 18px rgba(0,0,0,0.2));
+}
+.sh-label {
+  padding: 12px 14px 14px;
+  border-top: 1px solid var(--border);
+  background: rgba(0,0,0,0.12);
+}
+.sh-label p { font-size: 13px; font-weight: 800; color: var(--ink); margin: 0; }
+.sh-label span { font-size: 12px; color: rgba(249,244,238,0.76); }
+
+/* ── SECTION COMMONS ── */
+section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 12px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--brand);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  font-weight: 700; margin-bottom: .6rem;
+  letter-spacing: -0.03em;
+}
+.section-sub { color: rgba(249,244,238,0.72); font-size: 15px; margin-bottom: 2.5rem; }
+
+/* ── DIVIDER WAVE ── */
+.wave-divider { width: 100%; line-height: 0; }
+.wave-divider svg { display: block; width: 100%; }
+
+/* ── CATEGORIES ── */
+.catalog-shell {
+  max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem;
+}
+.catalog-tabs {
+  display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 2rem;
+}
+.catalog-tab {
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(75,46,36,0.12);
+  color: var(--ink);
+  border-radius: var(--r-pill);
+  padding: 10px 18px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px; font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+}
+.catalog-tab.active {
+  background: linear-gradient(135deg, var(--sky), var(--lilac));
+  color: var(--ink);
+  border-color: transparent;
+}
+.catalog-panel {
+  display: none;
+}
+.catalog-panel.active {
+  display: block;
+}
+.catalog-panel-header {
+  margin: 0 0 1.2rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(75,46,36,0.12);
+  border-radius: 18px;
+}
+.catalog-panel-header p {
+  color: var(--white);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  font-weight: 700;
+  margin: 0;
+}
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+.catalog-card {
+  background: rgba(255,255,255,0.72);
+  border: 1.5px solid rgba(75,46,36,0.12);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+  position: relative;
+  backdrop-filter: blur(8px);
+}
+.catalog-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(75,46,36,0.2);
+  box-shadow: 0 18px 32px rgba(112,145,172,0.18);
+}
+.catalog-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--brand); color: var(--ink);
+  border-radius: var(--r-pill); padding: 3px 10px;
+  font-size: 11px; font-weight: 700;
+  z-index: 2;
+}
+.catalog-stock {
+  position: absolute; top: 12px; right: 12px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11px; font-weight: 800;
+  letter-spacing: 0.02em;
+  z-index: 2;
+  border: 1px solid rgba(75,46,36,0.12);
+  backdrop-filter: blur(6px);
+}
+.catalog-stock.in {
+  background: rgba(125, 191, 140, 0.96);
+  color: #12371d;
+}
+.catalog-stock.out {
+  background: rgba(232, 112, 94, 0.96);
+  color: #fff7f5;
+}
+.catalog-art {
+  height: 220px; display: flex;
+  align-items: center; justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.68), rgba(214,233,248,0.6));
+  padding: 14px;
+}
+.catalog-art img {
+  max-width: 100%; max-height: 100%;
+  object-fit: contain; filter: drop-shadow(0 10px 22px rgba(0,0,0,0.12));
+}
+.catalog-info {
+  padding: 14px 16px 16px;
+  border-top: 1px solid rgba(75,46,36,0.1);
+  background: rgba(255,255,255,0.22);
+}
+.catalog-name {
+  font-size: 15px; font-weight: 700;
+  color: var(--ink); margin-bottom: 4px;
+}
+.catalog-desc {
+  font-size: 12px; color: var(--muted);
+  margin-bottom: 10px;
+}
+.catalog-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.catalog-price {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 700; color: var(--brand-d);
+}
+.catalog-more-wrap {
+  text-align: center; margin-top: 1.5rem;
+}
+.catalog-more-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  border-radius: var(--r-pill);
+  padding: 10px 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px; font-weight: 700;
+  cursor: pointer;
+}
+
+/* ── PACKS SECTION ── */
+.packs-bg { background: transparent; }
+.packs-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.pack-card {
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 28px 24px; text-align: center;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+  backdrop-filter: blur(8px);
+}
+.pack-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.4); box-shadow: 0 18px 30px rgba(0,0,0,0.18); }
+.pack-card.featured { border-color: rgba(231,185,106,0.8); position: relative; }
+.pack-art { font-size: 52px; margin-bottom: 16px; }
+.pack-name {
+  font-family: 'Fraunces', serif; font-size: 20px;
+  font-weight: 700; margin-bottom: 8px; color: var(--white);
+}
+.pack-desc { font-size: 13px; color: rgba(249,244,238,0.7); margin-bottom: 16px; }
+.pack-features { list-style: none; margin-bottom: 20px; }
+.pack-features li {
+  font-size: 13px; color: rgba(249,244,238,0.78);
+  padding: 5px 0; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 6px;
+}
+.pack-features li::before { content: '✓'; color: var(--brand); font-weight: 800; }
+.pack-price {
+  font-family: 'Fraunces', serif; font-size: 28px;
+  font-weight: 700; color: var(--brand); margin-bottom: 16px;
+}
+.pack-price small {
+  font-size: 14px; color: rgba(249,244,238,0.75);
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* ── ABOUT STRIP ── */
+.about-strip {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 1.5rem 0 0;
+  background: transparent;
+}
+.about-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.45fr 1.05fr; gap: 1.8rem;
+  align-items: center;
+  background: rgba(255,255,255,0.72);
+  border-radius: 18px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 8px 18px rgba(94, 108, 123, 0.08);
+}
+.about-art {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 220px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.22);
+  border: 2px solid rgba(94, 103, 110, 0.12);
+  overflow: hidden;
+  position: relative;
+  padding: 0.5rem;
+}
+.about-art img {
+  width: min(100%, 420px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(25, 27, 29, 0.08));
+  border-radius: 14px;
+}
+.about-text {
+  padding: 0.25rem 0.25rem 0.25rem 0;
+}
+.about-text .section-label {
+  color: var(--brand-d);
+  letter-spacing: 0.06em;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.about-text h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.8rem, 2.8vw, 3rem);
+  line-height: 1;
+  margin: 0 0 1rem;
+  color: var(--ink);
+}
+.about-text p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+  font-size: clamp(1.02rem, 1.4vw, 1.35rem);
+  line-height: 1.5;
+  font-weight: 700;
+}
+.info-meta {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem;
+}
+.info-meta span {
+  background: rgba(255,255,255,0.56);
+  border: 1px solid rgba(91,67,59,0.12);
+  color: var(--ink);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.info-detail-list {
+  max-width: 1100px;
+  margin: 1.25rem auto 0;
+  padding: 0 0.5rem;
+}
+.info-detail-list p {
+  font-size: clamp(1.2rem, 2vw, 2.2rem);
+  line-height: 1.35;
+  color: var(--white);
+  margin: 0 0 1rem;
+  font-weight: 700;
+}
+
+/* ── TESTIMONIALS ── */
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.testi-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--r-lg); padding: 24px;
+}
+.testi-stars { color: var(--coral); font-size: 16px; margin-bottom: 10px; }
+.testi-text { font-size: 14px; color: var(--muted); margin-bottom: 14px; font-style: italic; }
+.testi-author {
+  display: flex; align-items: center; gap: 10px;
+}
+.testi-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.testi-name { font-size: 13px; font-weight: 700; }
+.testi-handle { font-size: 12px; color: var(--muted); }
+
+/* ── NEWSLETTER ── */
+.newsletter {
+  background: transparent;
+  border-radius: var(--r-lg);
+  padding: 3.5rem; text-align: center;
+  margin: 0 2rem 4rem;
+}
+.newsletter h2 {
+  font-family: 'Fraunces', serif; font-size: 2rem;
+  color: var(--white); margin-bottom: .5rem;
+}
+.newsletter p { color: rgba(255,255,255,.85); margin-bottom: 1.5rem; }
+.newsletter-form {
+  display: flex; gap: 10px; max-width: 440px; margin: 0 auto;
+}
+.newsletter-form input {
+  flex: 1; border: none; border-radius: var(--r-pill);
+  padding: 12px 20px; font-family: 'Quicksand', sans-serif;
+  font-size: 15px; outline: none;
+}
+.newsletter-form button {
+  background: var(--ink); color: var(--white);
+  border: none; border-radius: var(--r-pill);
+  padding: 12px 24px; font-family: 'Quicksand', sans-serif;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  white-space: nowrap; transition: background .2s;
+}
+.newsletter-form button:hover { background: var(--coral-d); }
+
+/* ── FOOTER ── */
+footer {
+  background: linear-gradient(180deg, rgba(18,17,16,0.9), rgba(12,12,12,0.96));
+  color: rgba(255,255,255,.72);
+  padding: 3rem 2rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem;
+}
+.footer-logo {
+  font-family: 'Fraunces', serif; font-size: 20px;
+  color: var(--white); margin-bottom: .75rem;
+}
+.footer-tagline { font-size: 13px; margin-bottom: 1rem; color: rgba(255,255,255,.8); }
+.footer-social { display: flex; gap: 10px; }
+.social-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.1); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 15px;
+  transition: background .2s;
+}
+.social-btn:hover { background: var(--brand); color: #1d160f; }
+.footer-col h4 {
+  color: var(--white); font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 8px; }
+.footer-col a {
+  color: rgba(255,255,255,.7); text-decoration: none;
+  font-size: 13px; transition: color .2s;
+}
+.footer-col a:hover { color: var(--brand); }
+.footer-bottom {
+  max-width: 1100px; margin: 2rem auto 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.7);
+}
+.brand-slogan {
+  display: inline-block;
+  margin: 0 auto 1rem;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.1rem, 1.7vw, 1.75rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(75,46,36,0.08);
+  padding: 0.68rem 1rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 14px rgba(33, 42, 49, 0.06);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.brand-slogan strong {
+  color: var(--brand-d);
+  font-weight: 900;
+}
+
+/* ── CART TOAST ── */
+.toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--ink); color: var(--white);
+  border-radius: var(--r-md); padding: 14px 20px;
+  font-size: 14px; font-weight: 600;
+  transform: translateY(80px); opacity: 0;
+  transition: all .3s; z-index: 999;
+  display: flex; align-items: center; gap: 10px;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-visual { display: none; }
+  .packs-grid { grid-template-columns: 1fr; }
+  .about-inner { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  nav .nav-links { display: none; }
+
+  .catalog-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .catalog-tab {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 140px;
+    text-align: center;
+  }
+
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="logo-paniko.png" alt="Paniko Shop"></a>
+    <ul class="nav-links">
+      <li><a href="#tienda">Catálogo</a></li>
+      <li><a href="#packs">Packs</a></li>
+      <li><a href="#info">Info</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1100px;margin:0 auto;">
+  <div class="hero">
+    <div class="hero-text">
+      <img class="brand-logo-hero" src="logo-paniko.png" alt="Paniko Shop">
+      <p class="section-label">✦ catalog premium</p>
+      <h1>Paniko <em>Shop</em></h1>
+      <p>KOALAS PARA LLEVAR Arte que viaja contigo diseños originales, hechos con amor y llenos de personalidad :D.</p>
+      <div class="hero-actions">
+        <a href="#tienda" class="btn-primary">Ver catálogo</a>
+        <a href="#packs" class="btn-secondary">Packs</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">✨ Colección nueva</span>
+        <span class="badge">🎨 Hecho a mano</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="sticker-card-hero" style="background:rgba(255,255,255,0.08);">
+        <div class="sh-art"><img src="stickers-portada/105-sin-titulo-20260608211547.png" alt="Sticker portada 1"></div>
+      </div>
+      <div class="sticker-card-hero" style="background:rgba(255,255,255,0.08);">
+        <div class="sh-art"><img src="stickers-portada/105-sin-titulo-20260608211611.png" alt="Sticker portada 2"></div>
+      </div>
+      <div class="sticker-card-hero" style="background:rgba(255,255,255,0.08);">
+        <div class="sh-art"><img src="stickers-portada/105-sin-titulo-20260608211704.png" alt="Sticker portada 3"></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" height="40">
+    <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#CCE8FE"/>
+  </svg>
+</div>
+
+<section id="tienda">
+  <p class="section-label">★ Catálogo</p>
+  <h2 class="section-title">Nuestra colección</h2>
+  <p class="section-sub">Explora cada categoría del catálogo.</p>
+
+  <div class="catalog-shell">
+    <div class="catalog-tabs" id="catalog-tabs"></div>
+    <div id="catalog-sections"></div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" height="40">
+    <path d="M0,20 C300,50 600,0 900,30 C1050,45 1150,10 1200,20 L1200,60 L0,60 Z" fill="#CCE8FE"/>
+  </svg>
+</div>
+
+<!-- PACKS -->
+<div class="packs-bg">
+  <section id="packs" style="padding-top:3rem;">
+    <p class="section-label">📦</p>
+    <h2 class="section-title">Packs</h2>
+    <p class="section-sub">Descubre nuestras colecciones especiales</p>
+
+    <div class="packs-grid">
+      <div class="pack-card">
+        <div class="pack-art" style="padding:0; background:rgba(255,255,255,0.08); border-radius:16px; overflow:hidden;">
+          <img src="200-sin-titulo-20260731165817.png" alt="Combo llaveros" style="width:100%;max-width:240px;height:180px;object-fit:contain;background:rgba(255,255,255,0.12);border-radius:16px;display:block;margin:0 auto;">
+        </div>
+        <h3 class="pack-name">Combo Llaveros acrílicos personalizados</h3>
+        <p class="pack-desc">Diseño único para pedidos grupales</p>
+        <ul class="pack-features">
+          <li>Acrílico transparente</li>
+          <li>Precio unitario: Q35 cada uno</li>
+          <li>Incluye diseño personalizado, impresión a color y argolla metálica con forma de estrella</li>
+          <li>(Produccion por lotes de 12, tomar en cuenta. Consultar si se tiene dudas)</li>
+          <li>Entrega: 2 a 3 semanas</li>
+        </ul>
+        <p class="pack-price">Q35 <small>/ pieza</small></p>
+      </div>
+
+      <div class="pack-card featured">
+        <div class="pack-art"><img src="187-sin-titulo-20260819232413.png" alt="Combo artístico" style="width:100%;max-width:240px;height:180px;object-fit:cover;border-radius:16px;display:block;margin:0 auto 16px;"></div>
+        <h3 class="pack-name">Combo Artístico</h3>
+        <p class="pack-desc">Personalizado y hecho a mano</p>
+        <ul class="pack-features">
+          <li>Incluye: diseño personalizado</li>
+          <li>4 stickers + llavero pintado a mano</li>
+          <li>Pintura pequeña (mini o postcard)</li>
+          <li>Todo puede ser personalizado</li>
+          <li>Ideal para algo exclusivo y único</li>
+        </ul>
+        <p class="pack-price">Q170 <small>/ combo</small></p>
+      </div>
+
+      <div class="pack-card">
+        <div class="pack-art"><img src="187-sin-titulo-20260819231924.png" alt="Combo básico" style="width:100%;max-width:240px;height:180px;object-fit:cover;border-radius:16px;display:block;margin:0 auto 16px;"></div>
+        <h3 class="pack-name">Combo Básico</h3>
+        <p class="pack-desc">Una opción simple y especial</p>
+        <ul class="pack-features">
+          <li>4 stickers de mis diseños disponibles</li>
+          <li>Separador pintado a mano y personalizado</li>
+          <li>Print de edición limitada</li>
+          <li>Ideal para regalar o coleccionar</li>
+        </ul>
+        <p class="pack-price">Q140 <small>/ combo</small></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" height="40">
+    <path d="M0,20 C300,50 600,0 900,30 C1050,45 1150,10 1200,20 L1200,60 L0,60 Z" fill="#CCE8FE"/>
+  </svg>
+</div>
+
+<!-- INFO -->
+<div class="about-strip" id="info">
+  <div class="about-inner">
+    <div class="about-text">
+      <p class="section-label">HOLA!</p>
+      <h2>Te interesa adquirir algo?</h2>
+      <p>Contáctame por mensaje directo a mi instagram y con gusto te atiendo.</p>
+    </div>
+    <div class="about-art">
+      <img src="194-sin-titulo-20260816213018.png" alt="Personalizados">
+    </div>
+  </div>
+  <div class="info-detail-list">
+    <p>1. Las entregas son unicamente en la ciudad capital de Guatemala y tienen un cobro extra dependiendo del punto acordado.</p>
+    <p>2. Puedes estar pendiente los mercaditos que realizo junto a mi colectivo para asistir a comprar merch :D</p>
+  </div>
+</div>
+
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" height="40">
+    <path d="M0,20 C300,50 600,0 900,30 C1050,45 1150,10 1200,20 L1200,60 L0,60 Z" fill="#CCE8FE"/>
+  </svg>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-logo"></p>
+      <p class="footer-tagline">Stickers artesanales hechos con amor. Guatemala 🇬🇹</p>
+      <div class="brand-slogan"><strong>KOALAS</strong> PARA LLEVAR</div>
+      <div class="footer-social">
+        <a href="https://instagram.com/paniko.art" target="_blank" rel="noreferrer" class="social-btn" aria-label="Instagram">IG</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tienda</h4>
+      <ul>
+        <li><a href="#prints">Prints</a></li>
+        <li><a href="#pinturas-originales">Pinturas originales</a></li>
+        <li><a href="#separadores">Separadores</a></li>
+        <li><a href="#stickers">Stickers</a></li>
+        <li><a href="#llaveros-acrilicios">Llaveros acrílicos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#info">Info</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://instagram.com/paniko.art" target="_blank" rel="noreferrer">@paniko.art</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Hecho con 🧡 en Guatemala</span>
+  </div>
+</footer>
+
+<script>
+const catalogData = {
+  prints: [
+    { title: 'Vaca & Dona', image: 'prints/1000313076-1.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo)', price: 'Q 65.00' },
+    { title: 'Koala Nacho Libre', image: 'prints/1000314118.jpeg', description: 'Papel fotográfico brillante 21 × 13 cm(no adhesivo)', price: 'Q 60.00' },
+    { title: 'Mono Araña', image: 'prints/1000319326.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm (no adhesivo)', price: 'Q 65.00' },
+    { title: 'Maestro Strange', image: 'prints/1000322924-1.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo) ', price: 'Q 60.00' },
+    { title: 'Dulces Fiestas', image: 'prints/14-sin-titulo-20251231000109.jpg', description: 'Papel fotográfico brillante 13 × 21s cm(no adhesivo)', price: 'Q65.00' },
+    { title: 'Pániko en el Aire', image: 'prints/26-sin-titulo-20260115222740.jpg', description: 'Papel fotográfico brillante 21 × 13 cm(no adhesivo)', price: 'Q 65.00' },
+    { title: 'PIZZA PIZZA PIZZA', image: 'prints/30-sin-titulo-20260122175937.jpg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo)', price: 'Q65.00' },
+    { title: 'BESOS GRATIS', image: 'prints/46-sin-titulo-20260211194339.jpg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo)', price: 'Q65.00' },
+    { title: 'UNAS BIEN HELADAS', image: 'prints/54-sin-titulo-20260226165254.jpg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo)', price: 'Q 65.00' },
+    { title: 'LA LUCHA NOS HACE LIBRES', image: 'prints/63-sin-titulo-20260305203349.jpg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo) ', price: 'Q 65.00' },
+    { title: 'KAWABONGA', image: 'prints/65-sin-titulo-20260315151702.jpg', description: 'Papel fotográfico brillante 21 × 13 cm(no adhesivo) ', price: 'Q 65.00' },
+    { title: 'LIFE GOES ON...', image: 'prints/97107-03.jpeg', description: 'Papel fotográfico brillante 21 × 13 cm(no adhesivo) ', price: 'Q 65.00' },
+    { title: 'SR. SHERIF', image: 'prints/img-20250730-191308966-01.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo) ', price: 'Q60.00' },
+    { title: 'KOALA ARMSTRONG', image: 'prints/73455-01.jpeg', description: 'Papel fotográfico brillante 21 × 13 cm(no adhesivo)', price: 'Q65.00' },
+    { title: 'AMIGOS DE NIEVE', image: 'prints/46524-01.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo)', price: 'Q65.00' },
+    { title: 'EL CARRITO ROJO', image: 'prints/img-20260615-143250910-01.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo) ', price: 'Q65.00' },
+    { title: 'NOCHE DE HALLOWEEN', image: 'prints/40828-01.jpeg', description: 'Papel fotográfico brillante 21 × 13 cm(no adhesivo)', price: 'Q65.00' },
+    { title: 'KOALA FRANKENSTEIN', image: 'prints/33653-01.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo) ', price: 'Q60.00' },
+    { title: 'WEBI WABO', image: 'prints/37861-01.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo)', price: 'Q60.00' },
+    { title: 'KO- MOMIAS', image: 'prints/37366-01.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo) ', price: 'Q60.00' },
+    { title: 'BOO', image: 'prints/33222-01.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo)', price: 'Q60.00' },
+    { title: 'LA CHOCA', image: 'prints/28881-01.jpeg', description: 'Papel fotográfico brillante 13 × 21 cm(no adhesivo) ', price: 'Q60.00' }
+  ],
+  'pinturas-originales': [
+    { title: 'DOG POOL', image: 'pinturas-originales/1000250493-1.jpeg', description: 'Acuarela s/ papel 8.5 x 11.5 pulg', price: 'Q 265.00' },
+    { title: 'KOALA NACHO LIBRE', image: 'pinturas-originales/1000314118.jpeg', description: 'Acrílico s/ papel  11.5 x 8.5 pulg', price: 'Q 275.00' },
+    { title: 'MAESTRO STRANGE', image: 'pinturas-originales/1000322924-1.jpeg', description: 'Acrílico s/ papel  8.5 x 11.5 pulg', price: 'Q 250.00' },
+    { title: 'LA CHOCA', image: 'pinturas-originales/28881-01.jpeg', description: 'Acrílico s/ lienzo 7 x 5 pulg', price: 'Q 190.00' },
+    { title: 'EL BAILE DE LAS RANAS', image: 'pinturas-originales/img-7239.jpeg', description: 'Óleo pastel sobre lija de agua  9 x 11 pulg', price: 'Q 295.00' },
+    { title: 'REYES MAGOS', image: 'pinturas-originales/56174-01.jpeg', description: 'Acrílico s/ papel  11.5 x 8.5 pulg', price: 'Q 250.00' },
+    { title: 'KOALA ARMSTRONG', image: 'pinturas-originales/73455-01.jpeg', description: 'Acrílico s/ papel 11 x 16 pulg (A3)', price: 'Q 425.00' },
+    { title: 'EL CARRITO ROJO', image: 'pinturas-originales/img-20260615-143250910-01.jpeg', description: 'Acrílico s/ papel 11 x 16 pulg (A3)', price: 'Q 445.00' },
+    { title: 'NOCHE DE HALLOWEEN', image: 'pinturas-originales/40828-01.jpeg', description: 'Oleo pastel s/ papel 11.5 x 8.5 pulg', price: 'Q 275.00' },
+    { title: 'CUMPLEAÑOS SOLITARIO', image: 'pinturas-originales/49961-01.jpeg', description: 'Acuarela s/ papel 8.5 x 11.5 pulg', price: 'Q 250.00' },
+    { title: 'WEBI WABO', image: 'pinturas-originales/37861-01.jpeg', description: 'Acrílico s/ papel  11.5 x 8.5 pulg', price: 'Q 250.00' },
+    { title: 'KO- MOMIAS', image: 'pinturas-originales/37366-01.jpeg', description: 'Acrílico s/ papel  11.5 x 8.5 pulg', price: 'Q 250.00' },
+    { title: 'BOO', image: 'pinturas-originales/33222-01.jpeg', description: 'Acrílico s/ lienzo 7 x 5 pulg', price: 'Q 190.00' }
+  ],
+  separadores: [
+    { title: 'Gato manchitas', image: 'separadores/205-sin-titulo-20260811205336.png', description: 'Acrílico s/ carton 2 x 8.5 pulg', price: 'Q 20.00' },
+    { title: 'Gato Naranja', image: 'separadores/205-sin-titulo-20260811205434.png', description: 'Acrílico s/ carton 2 x 8.5 pulg', price: 'Q 20.00' },
+    { title: 'Gato Brujo', image: 'separadores/205-sin-titulo-20260811205359.png', description: 'Acrílico s/ carton 2 x 8.5 pulg', price: 'Q 20.00' },
+    { title: 'Gato medio gris', image: 'separadores/205-sin-titulo-20260811205520.png', description: 'Acrílico s/ carton 2 x 8.5 pulg', price: 'Q 20.00' },
+    { title: 'Gato gris', image: 'separadores/205-sin-titulo-20260811205543.png', description: 'Acrílico s/ carton 2 x 8.5 pulg', price: 'Q 20.00' },
+    { title: 'Gato cafecito', image: 'separadores/205-sin-titulo-20260811205607.png', description: 'Acrílico s/ carton 2 x 8.5 pulg', price: 'Q 20.00' }
+  ],
+  stickers: [
+    { title: 'DAKKOCHI', image: 'stickers-png/18-sin-titulo-20260607200442.png', description: 'Papel adhesivo brillante  4 x 7 cm', price: 'Q 5.00' },
+    { title: 'KO - CAKES', image: 'stickers-png/18-sin-titulo-20260607200530.png', description: 'Papel adhesivo brillante  6 x 4 cm', price: 'Q 5.00' },
+    { title: 'MAMUTCITO', image: 'stickers-png/18-sin-titulo2-20260607200747.png', description: 'Papel adhesivo brillante  4 x 3 cm', price: 'Q 5.00' },
+    { title: 'BANDERILLA KO', image: 'stickers-png/18-sin-titulo-20260607200642.png', description: 'Papel adhesivo brillante  4 x 6 cm', price: 'Q 5.00' },
+    { title: 'KODUMPLING', image: 'stickers-png/18-sin-titulo2-20260607200823.png', description: 'Papel adhesivo brillante  3 x 6 cm', price: 'Q 5.00' },
+    { title: 'CHIMMY BT21', image: 'stickers-png/42-sin-titulo-20260607201616.png', description: 'Papel adhesivo brillante  5 x 4 cm', price: 'Q 5.00' },
+    { title: 'RJ BT21', image: 'stickers-png/40-sin-titulo-20260607201512.png', description: 'Papel adhesivo brillante  5 x 4 cm', price: 'Q 5.00' },
+    { title: 'KOYA BT21', image: 'stickers-png/40-sin-titulo-20260607201433.png', description: 'Papel adhesivo brillante  5 x 4 cm', price: 'Q 5.00' },
+    { title: 'TATA BT21', image: 'stickers-png/40-sin-titulo-20260607201351.png', description: 'Papel adhesivo brillante  5 x 4 cm', price: 'Q 5.00' },
+    { title: 'COOKY BT21', image: 'stickers-png/40-sin-titulo-20260607201246.png', description: 'Papel adhesivo brillante  5 x 4 cm', price: 'Q 5.00' },
+    { title: 'MANG BT21', image: 'stickers-png/42-sin-titulo-20260607201651.png', description: 'Papel adhesivo brillante  5 x 4 cm', price: 'Q 5.00' },
+    { title: 'SHOOKY BT21', image: 'stickers-png/42-sin-titulo-20260607201725.png', description: 'Papel adhesivo brillante (No impermeable) 3 x 6 cm', price: 'Q 5.00' },
+    { title: 'DO YOU KNOW BTS? BT21', image: 'stickers-png/74-sin-titulo-20260811203324.png', description: 'Papel adhesivo brillante  5  x 7 cm(Impermeable)', price: 'Q 5.00' },
+    { title: 'FLOWER FLOWER BT21', image: 'stickers-png/74-sin-titulo-20260811203311.png', description: 'Papel adhesivo brillante  5  x 7 cm(Impermeable)', price: 'Q 5.00' },
+    { title: 'RM BT21', image: 'stickers-png/139-sin-titulo2-20260713213336.png', description: 'Papel adhesivo brillante  (No impermeable)  7  x 8 cm', price: 'Q 5.00' },
+    { title: 'HOBI BT21', image: 'stickers-png/139-sin-titulo2-20260625125518.png', description: 'Papel adhesivo brillante  (No impermeable)  7  x 8 cm', price: 'Q 5.00' },
+    { title: 'YOONGI BT21', image: 'stickers-png/139-sin-titulo2-20260701215940.png', description: 'Papel adhesivo brillante  (No impermeable)  7  x 8 cm', price: 'Q 5.00' },
+    { title: 'JIN BT21', image: 'stickers-png/139-sin-titulo2-20260630213955.png', description: 'Papel adhesivo brillante  (No impermeable)  7  x 8 cm', price: 'Q 5.00' },
+    { title: 'JUNGKOOK BT21', image: 'stickers-png/147-sin-titulo2-20260713214017.png', description: 'Papel adhesivo brillante  (No impermeable)  7  x 8 cm', price: 'Q 5.00' },
+    { title: 'TAEHYUNG BT21', image: 'stickers-png/147-sin-titulo2-20260713213936.png', description: 'Papel adhesivo brillante  (No impermeable)  7  x 8 cm', price: 'Q 5.00' },
+    { title: 'JIMIN BT21', image: 'stickers-png/147-sin-titulo2-20260630213640.png', description: 'Papel adhesivo brillante  (No impermeable)  7  x 8 cm', price: 'Q 5.00' },
+    { title: 'SOPITA COREANA Valentines Day Edition  (Impermeable)', image: 'stickers-png/40-sin-titulo-20260607201210.png', description: 'Papel adhesivo brillante  4 x 6 cm', price: 'Q 5.00' },
+    { title: 'FLORES Valentines Day Edition  (Impermeable)', image: 'stickers-png/37-sin-titulo-20260607201053.png', description: 'Papel adhesivo brillante  4 x 6 cm', price: 'Q 5.00' },
+    { title: 'POCKY Valentines Day Edition  (Impermeable)', image: 'stickers-png/37-sin-titulo-20260607201022.png', description: 'Papel adhesivo brillante  4 x 7 cm', price: 'Q 5.00' },
+    { title: 'PRESO Valentines Day Edition  (Impermeable)', image: 'stickers-png/37-sin-titulo-20260607200942.png', description: 'Papel adhesivo brillante  6 x 6 cm', price: 'Q 5.00' },
+    { title: 'HOLLIN & TOTORO GHIBLI Edition  (Impermeable)', image: 'stickers-png/56-sin-titulo-20260607202326.png', description: 'Papel adhesivo brillante  4 x 10 cm', price: 'Q 5.00' },
+    { title: 'KAONASHI FLAN GHIBLI Edition (Impermeable)', image: 'stickers-png/56-sin-titulo-20260607202227.png', description: 'Papel adhesivo brillante  5 x 4 cm', price: 'Q 5.00' },
+    { title: 'CALCIFER CUPCAKE GHIBLI Edition (Impermeable)', image: 'stickers-png/56-sin-titulo-20260607202552.png', description: 'Papel adhesivo brillante  4 x 7 cm', price: 'Q 5.00' },
+    { title: 'JIJI COOKIE GHIBLI Edition (Impermeable)', image: 'stickers-png/56-sin-titulo-20260607202432.png', description: 'Papel adhesivo brillante  4 x 4 cm', price: 'Q 5.00' },
+    { title: 'GATITO Mis estados de animo be like  (Impermeables)', image: 'stickers-png/72-sin-titulo-20260607202910.png', description: 'Papel adhesivo brillante  6 x 7 cm', price: 'Q 5.00' },
+    { title: 'PERRITO Mis estados de animo be like  (Impermeables)', image: 'stickers-png/72-sin-titulo-20260607202802.png', description: 'Papel adhesivo brillante  5 x 7 cm', price: 'Q 5.00' },
+    { title: 'GATOTE TRISTESOTE Mis estados de animo be like  (Impermeables)', image: 'stickers-png/72-sin-titulo-20260607203150.png', description: 'Papel adhesivo brillante  8 x 6 cm', price: 'Q 5.00' },
+    { title: 'GATITO ESTRESADITO Mis estados de animo be like  (Impermeables)', image: 'stickers-png/72-sin-titulo-20260607203027.png', description: 'Papel adhesivo brillante  6 x 7 cm', price: 'Q 5.00' },
+    { title: 'PSYDUCK Mis estados de animo be like  (Impermeables)', image: 'stickers-png/73-sin-titulo-20260607215106.png', description: 'Papel adhesivo brillante  5 x 6 cm', price: 'Q 5.00' },
+    { title: 'MIGAJERAS Mis estados de animo be like  (Impermeibles)', image: 'stickers-png/73-sin-titulo-20260607213721.png', description: 'Papel adhesivo brillante  6 x 8 cm', price: 'Q 5.00' },
+    { title: 'SNOOPY Mis estados de animo pt. 2  (Impermeables)', image: 'stickers-png/73-sin-titulo-20260607215240.png', description: 'Papel adhesivo brillante  4 x 7 cm', price: 'Q 5.00' },
+    { title: 'KIRBY FITNESS Mis estados de animo pt. 2  (Impermeables)', image: 'stickers-png/75-sin-titulo-20260607215514.png', description: 'Papel adhesivo brillante  5 x 7 cm', price: 'Q 5.00' },
+    { title: 'USALO... Mis estados de animo pt. 2  (Impermeables)', image: 'stickers-png/75-sin-titulo-20260607215911.png', description: 'Papel adhesivo brillante  5 x 7 cm', price: 'Q 5.00' },
+    { title: 'IM Fine Mis estados de animo pt. 2 (Impermeables)', image: 'stickers-png/75-sin-titulo-20260607215804.png', description: 'Papel adhesivo brillante  5 x 7 cm', price: 'Q 5.00' },
+    { title: 'PINGUINO ASESINO Mis estados de animo pt. 2 (Impermeables)', image: 'stickers-png/75-sin-titulo-20260607215702.png', description: 'Papel adhesivo brillante  6 x 7 cm', price: 'Q 5.00' },
+    { title: 'THIS IS FINE Mis estados de animo pt. 2 (Impermeables)', image: 'stickers-png/75-sin-titulo-20260607215613.png', description: 'Papel adhesivo brillante  5 x 7 cm', price: 'Q 5.00' },
+    { title: 'TULIO Tamagochis Edition  (Impermeables)', image: 'stickers-png/43-sin-titulo-20260607202022.png', description: 'Papel adhesivo brillante  8 x 6 cm', price: 'Q 5.00' },
+    { title: 'BODOQUE Tamagochis Edition (Impermeables)', image: 'stickers-png/43-sin-titulo-20260607201934.png', description: 'Papel adhesivo brillante  6 x 7 cm', price: 'Q 5.00' },
+    { title: 'MARCELINE Tamagochis Edition (Impermeables)', image: 'stickers-png/43-sin-titulo-20260607201851.png', description: 'Papel adhesivo brillante  8 x 6 cm', price: 'Q 5.00' },
+    { title: 'DULCE PRINCESA Tamagochis Edition (Impermeables)', image: 'stickers-png/43-sin-titulo-20260607201815.png', description: 'Papel adhesivo brillante  7 x 7 cm', price: 'Q 5.00' },
+    { title: 'QUEZALTECA Version RETRO, Cultura  en Guatemala (NO Impermeables)', image: 'stickers-png/stickers-retro/stickers-patriotas-09.png', description: 'Papel adhesivo brillante  5 x 8 cm', price: 'Q 5.00' },
+    { title: 'LA JARILLITA Version RETRO, Cultura  en Guatemala (NO Impermeables)', image: 'stickers-png/stickers-retro/stickers-patriotas-07.png', description: 'Papel adhesivo brillante  4 x 9 cm', price: 'Q 5.00' },
+    { title: 'TOSTADAS Version RETRO, Cultura  en Guatemala (NO Impermeables)', image: 'stickers-png/stickers-retro/stickers-patriotas-06.png', description: 'Papel adhesivo brillante  7 x 6 cm', price: 'Q 5.00' },
+    { title: 'HELADOS ARTESANALES Version RETRO, Cultura  en Guatemala (NO Impermeables)', image: 'stickers-png/stickers-retro/stickers-patriotas-03.png', description: 'Papel adhesivo brillante  6 x 8 cm', price: 'Q 5.00' },
+    { title: 'TACITA Version RETRO, Cultura  en Guatemala (NO Impermeables)', image: 'stickers-png/stickers-retro/stickers-patriotas-02.png', description: 'Papel adhesivo brillante  6 x 7 cm', price: 'Q 5.00' },
+    { title: 'ELOTE LOCO Version RETRO, Cultura  en Guatemala (NO Impermeables)', image: 'stickers-png/stickers-retro/stickers-patriotas-01.png', description: 'Papel adhesivo brillante  5 x 9 cm', price: 'Q 5.00' },
+    { title: 'BASURERITO Version RETRO, Cultura  en Guatemala (NO Impermeables)', image: 'stickers-png/stickers-retro/stickers02-01.png', description: 'Papel adhesivo brillante  4 x 6 cm', price: '2xQ 5.00' },
+    { title: 'CHOCOFRESA Version RETRO, Cultura  en Guatemala (NO Impermeables)', image: 'stickers-png/stickers-retro/stickers-03.png', description: 'Papel adhesivo brillante  6 x 6 cm', price: '2xQ 5.00' },
+    { title: 'VINO CALIENTE Version RETRO, Cultura  en Guatemala (NO Impermeables)', image: 'stickers-png/stickers-retro/207-sin-titulo-20260811213720.png', description: 'Papel adhesivo brillante  4 x 7 cm', price: '2xQ 5.00' },
+    { title: 'CHELAS Version RETRO, Cultura  en Guatemala (NO Impermeables)', image: 'stickers-png/stickers-retro/207-sin-titulo-20260811213659.png', description: 'Papel adhesivo brillante  4 x 4 cm', price: '2xQ 5.00' },
+    { title: 'ARANDANOS Version RETRO, Parejas Edition (NO Impermeables)', image: 'stickers-png/stickers-retro/207-sin-titulo-20260811213640.png', description: 'Papel adhesivo brillante  6 x 4 cm', price: '2xQ 5.00' },
+    { title: 'JOKEIS Version RETRO, Parejas Edition (NO Impermeables)', image: 'stickers-png/stickers-retro/207-sin-titulo-20260811213756.png', description: 'Papel adhesivo brillante  4 x 4 cm', price: '2xQ 5.00' },
+    { title: 'CORAZON VS CEREBRO Version RETRO, Parejas Edition (NO Impermeables)', image: 'stickers-png/stickers-retro/207-sin-titulo-20260811213811.png', description: 'Papel adhesivo brillante  6 x 4 cm', price: '2xQ 5.00' },
+    { title: 'HUEVOS POBRES Version RETRO, Parejas Edition (NO Impermeables)', image: 'stickers-png/stickers-retro/207-sin-titulo-20260811213839.png', description: 'Papel adhesivo brillante  6 x 3 cm', price: '2xQ 5.00' },
+    { title: 'PIÑA COLADA Version RETRO, Parejas Edition (NO Impermeables)', image: 'stickers-png/stickers-retro/207-sin-titulo-20260811213858.png', description: 'Papel adhesivo brillante  6 x 6 cm', price: '2xQ 5.00' }
+  ],
+  'llaveros-acrilicios': [
+    { title: 'RM', image: 'llaveros-acrilicos-catalogo/139-sin-titulo-20260608175604.png', description: 'Acrílico transparente 3.5 x 6 cm', price: 'Q 35.00' },
+    { title: 'Jin', image: 'llaveros-acrilicos-catalogo/139-sin-titulo-20260608175818.png', description: 'Acrílico transparente 5 x 4 cm', price: 'Q 35.00' },
+    { title: 'Suga', image: 'llaveros-acrilicos-catalogo/139-sin-titulo-20260608175933.png', description: 'Acrílico transparente 5 x 4.5 cm', price: 'Q 35.00' },
+    { title: 'J Hope', image: 'llaveros-acrilicos-catalogo/139-sin-titulo-20260608180056.png', description: 'Acrílico transparente 3 x 6 cm', price: 'Q 35.00' },
+    { title: 'Jimin', image: 'llaveros-acrilicos-catalogo/147-sin-titulo-20260608180624.png', description: 'Acrílico transparente 5 x 4.5 cm', price: 'Q 35.00' },
+    { title: 'V', image: 'llaveros-acrilicos-catalogo/147-sin-titulo-20260608180812.png', description: 'Acrílico transparente 3.5 x 5.5 cm', price: 'Q 35.00' },
+    { title: 'Jungkook', image: 'llaveros-acrilicos-catalogo/147-sin-titulo-20260608181021.png', description: 'Acrílico transparente 3.5 x 5.5 cm', price: 'Q 35.00' },
+    { title: 'Deadpool', image: 'llaveros-acrilicos-catalogo/201-sin-titulo-20260811205835.png', description: 'Acrílico transparente 5.5 x 4 cm', price: 'Q 35.00' },
+    { title: 'Wolverine', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811205936.png', description: 'Acrílico transparente  4.5 x 5 cm', price: 'Q 35.00' },
+    { title: 'Iron Man', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210022.png', description: 'Acrílico transparente 3 x 5.5 cm', price: 'Q 35.00' },
+    { title: 'Batman', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210113.png', description: 'Acrílico transparente 4.5 x 4.5 cm', price: 'Q 35.00' },
+    { title: 'Freddy Mercury (I want to break free)', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210233.png', description: 'Acrílico transparente 3 x 5.5 cm', price: 'Q 35.00' },
+    { title: 'Spider-Man', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210050.png', description: 'Acrílico transparente 4 x 5 cm', price: 'Q 35.00' },
+    { title: 'Michael Jackson (Smooth Criminal)', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210131.png', description: 'Acrílico transparente 3.5 x 5.5 cm', price: 'Q 35.00' },
+    { title: 'Michael Jackson (BAD)', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210146.png', description: 'Acrílico transparente 3 x 5.5 cm', price: 'Q 35.00' },
+    { title: 'Michael Jackson (The way you make me feel)', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210202.png', description: 'Acrílico transparente 3 x 5.5 cm', price: 'Q 35.00', stock: 'Agotado' },
+    { title: 'Michael Jackson (Thriller)', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210218.png', description: 'Acrílico transparente 3 x 5.5 cm', price: 'Q 35.00' },
+    { title: 'Pigglet', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210305.png', description: 'Acrílico transparente 3 x 5 cm', price: 'Q 35.00' },
+    { title: 'Igor', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210322.png', description: 'Acrílico transparente 3.5 x 5.5 cm', price: 'Q 35.00' },
+    { title: 'Tiger', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210350.png', description: 'Acrílico transparente 4 x 5.5 cm', price: 'Q 35.00' },
+    { title: 'Winnie Poh', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210410.png', description: 'Acrílico transparente 4 x 5 cm', price: 'Q 35.00' },
+    { title: 'Finn', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210424.png', description: 'Acrílico transparente 5 x 5.5 cm', price: 'Q 35.00' },
+    { title: 'Jake', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210436.png', description: 'Acrílico transparente 5 x 4.5 cm', price: 'Q 35.00' },
+    { title: 'BMO', image: 'llaveros-acrilicos-catalogo/202-sin-titulo-20260811210454.png', description: 'Acrílico transparente 4.5 x 4 cm', price: 'Q 35.00', stock: 'Agotado' }
+  ],
+  'llaveros-hama-beads': [
+    { title: 'Llaveros Hama beads', image: 'llaveros-hama-beads/213-sin-titulo-20260817210840.png', price: 'Q 20.00' }
+  ],
+  'accesorios-fieltro': [
+    { title: 'Accesorios de fieltro', image: 'accesorios-de-fieltro-20260825t020827z-1-001/accesorios-de-fieltro/213-sin-titulo-20260818225144.png', price: 'Q 15.00' }
+  ],
+  'llaveros-personalizados': [
+    { title: 'Llaveros muestra 1', image: 'llaveros-personalizados/203-sin-titulo-20260811204849.png', price: 'Q 15.00' },
+    { title: 'Llaveros muestra 2', image: 'llaveros-personalizados/203-sin-titulo-20260811204944.png', price: 'Q 15.00' }
+  ]
+};
+
+const categoryOrder = ['prints', 'pinturas-originales', 'separadores', 'stickers', 'llaveros-acrilicios', 'llaveros-hama-beads', 'accesorios-fieltro', 'llaveros-personalizados'];
+const categoryLabels = {
+  prints: 'Prints',
+  'pinturas-originales': 'Pinturas originales',
+  separadores: 'Separadores',
+  stickers: 'Stickers',
+  'llaveros-acrilicios': 'Llaveros acrílicos',
+  'llaveros-hama-beads': 'Llaveros Hama beads',
+  'accesorios-fieltro': 'Accesorios de fieltro',
+  'llaveros-personalizados': 'Llaveros personalizados'
+};
+const categoryDescriptions = {
+  prints: 'Los prints son versiones impresas de las pinturas originales (no son stickers).',
+  'pinturas-originales': 'No existen replicas de las pinturas originales, elige tu favorita :D.',
+  separadores: 'Separadores de libro con formas de gato, puedes ordenar personalizados',
+  stickers: 'Cada Diseño hecho con amor, elige tus favoritos :D.',
+  'llaveros-acrilicios': 'Llaveros transparentes con argollas en forma de estrella.',
+  'llaveros-hama-beads': 'Llaveros con diseño personalizado, de preferencia personajes, Hama Beads, (figuras pixeladas)(No sé aceptan pedidos mayores a 6 x 6 cm).',
+  'accesorios-fieltro': 'hechos de fieltro junto con una cadena de hierro. (No sé aceptan pedidos mayores a 6 x 6 cm).',
+  'llaveros-personalizados': 'Llaveros personalizados con diseño único y hecho a medida.'
+};
+const expanded = {};
+let activeCategory = 'prints';
+
+function renderCatalog() {
+  const tabs = document.getElementById('catalog-tabs');
+  const sections = document.getElementById('catalog-sections');
+
+  tabs.innerHTML = categoryOrder.map((key) => `
+    <button class="catalog-tab ${key === activeCategory ? 'active' : ''}" data-category="${key}">${categoryLabels[key]}</button>
+  `).join('');
+
+  sections.innerHTML = categoryOrder.map((key) => {
+    const items = catalogData[key] || [];
+    const limit = 8;
+    const visibleItems = expanded[key] ? items : items.slice(0, limit);
+    const showMore = items.length > limit;
+
+    return `
+      <section id="${key}" class="catalog-panel ${key === activeCategory ? 'active' : ''}" data-panel="${key}">
+        <div class="catalog-panel-header">
+          <p>${categoryDescriptions[key]}</p>
+        </div>
+        <div class="catalog-grid">
+          ${visibleItems.map((item, index) => {
+            const stockLabel = item.stock || 'En stock';
+            const stockClass = stockLabel === 'Agotado' ? 'out' : 'in';
+            return `
+              <article class="catalog-card">
+                <span class="catalog-badge">${index + 1}</span>
+                <span class="catalog-stock ${stockClass}">${stockLabel}</span>
+                <div class="catalog-art"><img src="${githubAsset(item.image)}" alt="${item.title}"></div>
+                <div class="catalog-info">
+                  <p class="catalog-name">${item.title}</p>
+                  <p class="catalog-desc">${item.description}</p>
+                  <div class="catalog-footer">
+                    <span class="catalog-price">${item.price}</span>
+                  </div>
+                </div>
+              </article>
+            `;
+          }).join('')}
+        </div>
+        ${showMore ? `
+          <div class="catalog-more-wrap">
+            <button class="catalog-more-btn" data-toggle-category="${key}">${expanded[key] ? 'Ver menos' : 'Ver más'}</button>
+          </div>
+        ` : ''}
+      </section>
+    `;
+  }).join('');
+
+  document.querySelectorAll('img[src]').forEach((image) => {
+    useImageFallback(image);
+  });
+
+  document.querySelectorAll('.catalog-tab').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeCategory = btn.dataset.category;
+      renderCatalog();
+    });
+  });
+
+  document.querySelectorAll('.catalog-more-btn').forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const key = btn.dataset.toggleCategory;
+      expanded[key] = !expanded[key];
+      activeCategory = key;
+      renderCatalog();
+    });
+  });
+}
+
+function subscribe() {
+  const email = document.getElementById('email-input').value;
+  if (!email || !email.includes('@')) {
+    alert('Ingresa un correo válido');
+    return;
+  }
+  alert('¡Bienvenida! Revisa tu correo 💌');
+  document.getElementById('email-input').value = '';
+}
+
+function githubAsset(path) {
+  return path.replace(/^assets\//, '');
+}
+
+categoryOrder.forEach((key) => {
+  expanded[key] = false;
+});
+
+function useImageFallback(image) {
+  const candidates = assetCandidates(image.getAttribute('src'));
+  let candidateIndex = 0;
+
+  image.src = candidates[candidateIndex];
+  image.addEventListener('error', () => {
+    candidateIndex += 1;
+    if (candidateIndex < candidates.length) {
+      image.src = candidates[candidateIndex];
+    }
+  });
+}
+
+function useCssAssetFallback(variable, path) {
+  const candidates = assetCandidates(path);
+  let candidateIndex = 0;
+  const probe = new Image();
+
+  probe.onload = () => document.documentElement.style.setProperty(variable, `url("${candidates[candidateIndex]}")`);
+  probe.onerror = () => {
+    candidateIndex += 1;
+    if (candidateIndex < candidates.length) {
+      probe.src = candidates[candidateIndex];
+    }
+  };
+  probe.src = candidates[candidateIndex];
+}
+
+function assetCandidates(path) {
+  const cleanPath = path.replace(/^assets\//, '');
+  const fileName = cleanPath.split('/').pop();
+  const variants = [cleanPath, fileName, `assets/${cleanPath}`, `assets/${fileName}`];
+
+  if (cleanPath.startsWith('prints/')) {
+    const variant = cleanPath.replace(/^prints\//, 'Prints/');
+    variants.push(variant, `Prints/${fileName}`);
+  }
+  if (cleanPath.startsWith('separadores/')) {
+    const variant = cleanPath.replace(/^separadores\//, 'Separadores/');
+    variants.push(variant, `Separadores/${fileName}`);
+  }
+  if (cleanPath.startsWith('llaveros-acrilicos-catalogo/')) {
+    const variant = cleanPath.replace(/^llaveros-acrilicos-catalogo\//, 'Llaveros acrílicos catálogo/');
+    variants.push(variant, `Llaveros acrílicos catálogo/${fileName}`);
+  }
+
+  return [...new Set(variants.filter(Boolean))];
+}
+
+document.querySelectorAll('img[src]').forEach((image) => {
+  useImageFallback(image);
+});
+
+useCssAssetFallback('--bg-url', 'fondo-pagina.png');
+useCssAssetFallback('--nav-image', '208-sin-titulo-20260819211128.jpg');
+
+renderCatalog();
+</script>
+</body>
+</html>
