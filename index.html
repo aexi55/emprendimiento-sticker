@@ -31,9 +31,9 @@
   --muted:   #6E4F43;
   --border:  rgba(75,46,36,0.18);
   --white:   #FFFDFB;
-  --bg-url: url('assets/fondo-pagina.png');
-  --nav-bg: url('assets/fondo-nav.jpg');
-  --nav-image: url('assets/208-sin-titulo-20260819211128.jpg');
+  --bg-url: url('fondo-pagina.png');
+  --nav-bg: url('fondo-nav.jpg');
+  --nav-image: url('208-sin-titulo-20260819211128.jpg');
   --r-sm: 12px;
   --r-md: 18px;
   --r-lg: 30px;
@@ -616,7 +616,7 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo"><img src="assets/logo-paniko.png" alt="Paniko Shop"></a>
+    <a href="#" class="nav-logo"><img src="logo-paniko.png" alt="Paniko Shop"></a>
     <ul class="nav-links">
       <li><a href="#tienda">Catálogo</a></li>
       <li><a href="#packs">Packs</a></li>
@@ -630,7 +630,7 @@ footer {
 <div style="max-width:1100px;margin:0 auto;">
   <div class="hero">
     <div class="hero-text">
-      <img class="brand-logo-hero" src="assets/logo-paniko.png" alt="Paniko Shop">
+      <img class="brand-logo-hero" src="logo-paniko.png" alt="Paniko Shop">
       <p class="section-label">✦ catalog premium</p>
       <h1>Paniko <em>Shop</em></h1>
       <p>KOALAS PARA LLEVAR Arte que viaja contigo diseños originales, hechos con amor y llenos de personalidad :D.</p>
@@ -645,13 +645,13 @@ footer {
     </div>
     <div class="hero-visual">
       <div class="sticker-card-hero" style="background:rgba(255,255,255,0.08);">
-        <div class="sh-art"><img src="assets/stickers-portada/105-sin-titulo-20260608211547.png" alt="Sticker portada 1"></div>
+        <div class="sh-art"><img src="stickers-portada/105-sin-titulo-20260608211547.png" alt="Sticker portada 1"></div>
       </div>
       <div class="sticker-card-hero" style="background:rgba(255,255,255,0.08);">
-        <div class="sh-art"><img src="assets/stickers-portada/105-sin-titulo-20260608211611.png" alt="Sticker portada 2"></div>
+        <div class="sh-art"><img src="stickers-portada/105-sin-titulo-20260608211611.png" alt="Sticker portada 2"></div>
       </div>
       <div class="sticker-card-hero" style="background:rgba(255,255,255,0.08);">
-        <div class="sh-art"><img src="assets/stickers-portada/105-sin-titulo-20260608211704.png" alt="Sticker portada 3"></div>
+        <div class="sh-art"><img src="stickers-portada/105-sin-titulo-20260608211704.png" alt="Sticker portada 3"></div>
       </div>
       </div>
     </div>
@@ -1062,7 +1062,7 @@ function subscribe() {
 }
 
 function githubAsset(path) {
-  return path;
+  return path.replace(/^assets\//, '');
 }
 
 categoryOrder.forEach((key) => {
@@ -1098,21 +1098,30 @@ function useCssAssetFallback(variable, path) {
 
 function assetCandidates(path) {
   const cleanPath = path.replace(/^assets\//, '');
-  const variants = [path, cleanPath];
+  const variants = [cleanPath, `assets/${cleanPath}`];
 
-  if (cleanPath.startsWith('prints/')) variants.push(cleanPath.replace(/^prints\//, 'Prints/'));
-  if (cleanPath.startsWith('separadores/')) variants.push(cleanPath.replace(/^separadores\//, 'Separadores/'));
-  if (cleanPath.startsWith('llaveros-acrilicos-catalogo/')) variants.push(cleanPath.replace(/^llaveros-acrilicos-catalogo\//, 'Llaveros acrílicos catálogo/'));
+  if (cleanPath.startsWith('prints/')) {
+    const variant = cleanPath.replace(/^prints\//, 'Prints/');
+    variants.push(variant, `assets/${variant}`);
+  }
+  if (cleanPath.startsWith('separadores/')) {
+    const variant = cleanPath.replace(/^separadores\//, 'Separadores/');
+    variants.push(variant, `assets/${variant}`);
+  }
+  if (cleanPath.startsWith('llaveros-acrilicos-catalogo/')) {
+    const variant = cleanPath.replace(/^llaveros-acrilicos-catalogo\//, 'Llaveros acrílicos catálogo/');
+    variants.push(variant, `assets/${variant}`);
+  }
 
   return [...new Set(variants)];
 }
 
-document.querySelectorAll('img[src^="assets/"]').forEach((image) => {
+document.querySelectorAll('img[src]').forEach((image) => {
   useImageFallback(image);
 });
 
-useCssAssetFallback('--bg-url', 'assets/fondo-pagina.png');
-useCssAssetFallback('--nav-image', 'assets/208-sin-titulo-20260819211128.jpg');
+useCssAssetFallback('--bg-url', 'fondo-pagina.png');
+useCssAssetFallback('--nav-image', '208-sin-titulo-20260819211128.jpg');
 
 renderCatalog();
 </script>
